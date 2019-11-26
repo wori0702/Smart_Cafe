@@ -3,8 +3,11 @@ package com.example.smartcafe;
 import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import android.content.Intent;
@@ -15,7 +18,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.IOException;
-//테스트 수정
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -25,12 +27,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        RequestBody requestBody = new FormBody.Builder()
+                .add("Message","MSG")
+                .build();
+        Log.d("error","error is " +requestBody);
 
         OkHttpClient client = new OkHttpClient();
 
-        String url = "http://192.168.0.80";                                 //wifi 모듈에 잡아놓은 수동 IP
+        String url = "https://reqres.in/api/users?page=2";                                 //wifi 모듈에 잡아놓은 수동 IP http://192.168.0.80
         final Request request = new Request.Builder()
                 .url(url)
+                .post(requestBody)
                 .build();
         System.out.println("request : " + request);
 
@@ -38,8 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button SettingButton = findViewById(R.id.MySettingButton);
 
         T1 = findViewById(R.id.BTnum);
-        TextView T2 = findViewById(R.id.TPnum);
-        TextView T3 = findViewById(R.id.Co2num);
+        final TextView T2 = findViewById(R.id.TPnum);
+        final TextView T3 = findViewById(R.id.Co2num);
 
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -52,18 +59,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onResponse(Call call, Response response) throws IOException {
                 if(response.isSuccessful()){
                     final String myRespone = response.body().string();
-
-                    System.out.println("Respone : "+ myRespone);
+                    final String[] splittest = myRespone.split("\"");
+                    System.out.println("Respone : "+ response.toString());
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            T1.setText(myRespone);
+                            T1.setText(splittest[0]);
+                            T2.setText(splittest[1]);
+                            T3.setText(splittest[2]);
                         }
                     });
                 }
             }
         });
-
     }
 
 
@@ -73,7 +81,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId())
         {
+
             case R.id.RoomButton:
+
                 Intent intent = new Intent(this, RoomAcivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 startActivity(intent);

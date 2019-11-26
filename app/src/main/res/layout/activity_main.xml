@@ -95,12 +95,14 @@
             android:layout_weight="1">
 
             <Button
+                android:id="@+id/TestBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:onClick="onClick"
                 android:background="@drawable/btn_bg"
                 android:drawableLeft="@drawable/setting"
                 android:text="Open Space"
