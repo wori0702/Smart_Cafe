@@ -22,20 +22,26 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView T1;
+    public OkHttpClient client;
+    public  Request request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RequestBody requestBody = new FormBody.Builder()
-                .add("Message","MSG")
+
+
+
+        final RequestBody requestBody = new FormBody.Builder()
+                .add("str[0]","20")
+                .add("str[1]","30")
                 .build();
         Log.d("error","error is " +requestBody);
 
-        OkHttpClient client = new OkHttpClient();
+       client = new OkHttpClient();
 
-        String url = "https://reqres.in/api/users?page=2";                                 //wifi 모듈에 잡아놓은 수동 IP http://192.168.0.80
-        final Request request = new Request.Builder()
+        String url = "http://192.168.0.80/getdata";                                 //wifi 모듈에 잡아놓은 수동 IP http://192.168.0.80  https://reqres.in/api/users?page=2
+        request = new Request.Builder()
                 .url(url)
                 .post(requestBody)
                 .build();
@@ -59,21 +65,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onResponse(Call call, Response response) throws IOException {
                 if(response.isSuccessful()){
                     final String myRespone = response.body().string();
-                    final String[] splittest = myRespone.split("\"");
+//                    final String[] splittest = myRespone.split("\"");
                     System.out.println("Respone : "+ response.toString());
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            T1.setText(splittest[0]);
-                            T2.setText(splittest[1]);
-                            T3.setText(splittest[2]);
+                            T1.setText(myRespone);
+//                            T2.setText(splittest[1]);
+//                            T3.setText(splittest[2]);
                         }
                     });
                 }
             }
         });
     }
-
 
 
     @Override
@@ -83,6 +88,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
 
             case R.id.RoomButton:
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        if(response.isSuccessful()){
+                            final String myRespone = response.body().string();
+//                    final String[] splittest = myRespone.split("\"");
+                            System.out.println("Respone : "+ response.toString());
+                            MainActivity.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    T1.setText(myRespone);
+//                            T2.setText(splittest[1]);
+//                            T3.setText(splittest[2]);
+                                }
+                            });
+                        }
+
+                    }
+                });
 
                 Intent intent = new Intent(this, RoomAcivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
