@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+
         final RequestBody requestBody = new FormBody.Builder()
                 .add("str[0]","20")
                 .add("str[1]","30")
@@ -40,12 +41,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
        client = new OkHttpClient();
 
-        String url = "http://192.168.0.80/getdata";                                 //wifi 모듈에 잡아놓은 수동 IP http://192.168.0.80  https://reqres.in/api/users?page=2
+        String url = "http://192.168.0.80/getdata";                                 //wifi 모듈에 잡아놓은 수동 IP http://192.168.0.80
         request = new Request.Builder()
                 .url(url)
                 .post(requestBody)
                 .build();
-        System.out.println("request : " + request);
 
         Button RoomButton = findViewById(R.id.RoomButton);
         Button SettingButton = findViewById(R.id.MySettingButton);
@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
-                Log.d("error","Connect Sever Error is " +call +" _"+e.toString());
             }
 
             @Override
@@ -66,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(response.isSuccessful()){
                     final String myRespone = response.body().string();
 //                    final String[] splittest = myRespone.split("\"");
-                    System.out.println("Respone : "+ response.toString());
                     MainActivity.this.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

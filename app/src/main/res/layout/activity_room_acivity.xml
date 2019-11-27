@@ -220,8 +220,10 @@
                         android:src="@drawable/lights" />
 
                     <SeekBar
+                        android:id="@+id/seek"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:max="256"
                         android:layout_weight="1" />
 
                 </LinearLayout>
@@ -236,15 +238,19 @@
             android:orientation="horizontal"
             android:layout_marginTop="30dp"
             android:layout_weight="0.5">
+
             <Button
+                android:id="@+id/BTS"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:layout_weight="1"
-                android:textSize="30dp"
                 android:layout_marginLeft="15dp"
-                android:background="@drawable/btn_bg"
                 android:layout_marginRight="15dp"
-                android:text="적용"/>
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:background="@drawable/btn_bg"
+                android:text="적용"
+                android:textSize="30dp" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
