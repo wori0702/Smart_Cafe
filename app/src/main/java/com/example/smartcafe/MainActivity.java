@@ -1,5 +1,6 @@
 package com.example.smartcafe;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -18,19 +19,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView T1;
     public OkHttpClient client;
     public  Request request;
+    public String save_temp="23";
+    public String save_light="127";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
 
         final RequestBody requestBody = new FormBody.Builder()
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
        client = new OkHttpClient();
 
-        String url = "http://192.168.0.80/getdata";                                 //wifi 모듈에 잡아놓은 수동 IP http://192.168.0.80
+        String url = "http://192.168.0.80/receive_data";                                 //a여기서는 데이터 받아오는거만 하는거야
         request = new Request.Builder()
                 .url(url)
                 .post(requestBody)
@@ -86,34 +88,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
 
             case R.id.RoomButton:
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        e.printStackTrace();
-                    }
 
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        if(response.isSuccessful()){
-                            final String myRespone = response.body().string();
-//                    final String[] splittest = myRespone.split("\"");
-                            System.out.println("Respone : "+ response.toString());
-                            MainActivity.this.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    T1.setText(myRespone);
-//                            T2.setText(splittest[1]);
-//                            T3.setText(splittest[2]);
-                                }
-                            });
-                        }
+                Log.d("get_data", save_light + "aaaaa"+save_temp);
+                Bundle bundle = new Bundle();
 
-                    }
-                });
-
+                bundle.putString("Temperature",save_temp);
+                bundle.putString("Light",save_light);
                 Intent intent = new Intent(this, RoomAcivity.class);
+                intent.putExtras(bundle);
                 intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                startActivity(intent);
+                startActivityForResult(intent,1);
                 break;
 
             case R.id.MySettingButton:
@@ -126,4 +110,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("here","im in here");
+
+        if (requestCode ==requestCode)
+        {
+            if( resultCode ==RESULT_OK)
+            {
+                Bundle bundle = data.getExtras();
+                save_light = bundle.getString("Light");
+                save_temp = bundle.getString("Temperture");
+                Log.d("OK_data",save_light + "aaaa"+save_temp);
+
+            }
+        }
+    }
 }
