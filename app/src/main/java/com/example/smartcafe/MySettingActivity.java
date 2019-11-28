@@ -44,7 +44,6 @@ public class MySettingActivity extends AppCompatActivity {
         data = new String[4];
         idx = new int[10];
         plusidx = new int[4];
-        // dkdkdkdk
 
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(getFilesDir() + "test.txt"));
