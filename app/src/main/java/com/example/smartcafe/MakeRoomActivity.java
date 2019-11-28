@@ -8,16 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 
-public class RoomAcivity extends AppCompatActivity implements View.OnClickListener {
+public class MakeRoomActivity extends AppCompatActivity implements View.OnClickListener {
 
     SeekBar seekBar;
     Button btn;
     String seekdata;
-//
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room_acivity);
+        setContentView(R.layout.activity_make_room);
 
         seekBar= findViewById(R.id.seek);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -49,7 +49,8 @@ public class RoomAcivity extends AppCompatActivity implements View.OnClickListen
         switch (view.getId()) {
             case R.id.BTS:
                 Log.d("makchar",seekdata);
+            case R.id.cancle:
+                onBackPressed();
         }
     }
-
 }

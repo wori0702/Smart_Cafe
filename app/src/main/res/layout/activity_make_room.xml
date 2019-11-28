@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RoomAcivity">
+    tools:context=".MakeRoomActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,16 +14,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="General Setting"
-                android:textSize="30dp"
                 android:layout_weight="1"
-                android:gravity="bottom"/>
+                android:gravity="bottom"
+                android:text="General Setting"
+                android:textSize="30dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,6 +49,7 @@
                     android:background="@drawable/btn_bg"
                     android:drawableTop="@drawable/spring"
                     android:drawablePadding="-15dp"
+                    android:onClick="onClick"
                     android:paddingTop="20dp"
                     android:text="Spring" />
 
@@ -60,6 +61,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/btn_bg"
                     android:drawableTop="@drawable/summer"
+                    android:onClick="onClick"
                     android:paddingTop="20dp"
                     android:text="Summer" />
 
@@ -72,14 +74,15 @@
                     android:background="@drawable/btn_bg"
                     android:drawableTop="@drawable/winter"
                     android:paddingTop="20dp"
-                    android:text="Winter" />
+                    android:text="Winter"
+                    tools:onClick="onClick" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
                 android:layout_marginTop="10dp"
+                android:layout_weight="2"
                 android:gravity="center">
 
                 <TextView
@@ -96,10 +99,10 @@
                     android:id="@+id/button3"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:drawableTop="@drawable/laptop"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_bg"
+                    android:drawableTop="@drawable/laptop"
                     android:paddingTop="20dp"
                     android:text="Laptop" />
 
@@ -107,51 +110,49 @@
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:drawableTop="@drawable/discuss"
-                    android:background="@drawable/btn_bg"
-                    android:paddingTop="20dp"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
+                    android:background="@drawable/btn_bg"
+                    android:drawableTop="@drawable/discuss"
+                    android:paddingTop="20dp"
                     android:text="Discuss" />
 
                 <Button
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
-                    android:background="@drawable/btn_bg"
                     android:layout_height="match_parent"
-                    android:paddingTop="20dp"
-                    android:drawableTop="@drawable/study"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
+                    android:background="@drawable/btn_bg"
+                    android:drawableTop="@drawable/study"
+                    android:paddingTop="20dp"
                     android:text="Study" />
             </LinearLayout>
-
-
 
 
         </LinearLayout>
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
             android:layout_marginTop="10dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="General Setting"
-                android:textSize="30dp"
                 android:layout_weight="1"
-                android:gravity="bottom"/>
+                android:gravity="bottom"
+                android:text="General Setting"
+                android:textSize="30dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -173,8 +174,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:textSize="40dp"
-                        android:text="Default" />
+                        android:text="Default"
+                        android:textSize="40dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -186,10 +187,10 @@
                             android:id="@+id/button7"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
                             android:layout_marginLeft="20dp"
-                            android:layout_marginBottom="5dp"
                             android:layout_marginRight="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="1"
                             android:background="@drawable/btn_bg"
                             android:drawableLeft="@drawable/up"
 
@@ -200,11 +201,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="20dp"
-                            android:drawableLeft="@drawable/down"
                             android:layout_marginRight="10dp"
-                            android:paddingLeft="40dp"
+                            android:layout_weight="1"
                             android:background="@drawable/btn_bg"
-                            android:layout_weight="1"/>
+                            android:drawableLeft="@drawable/down"
+                            android:paddingLeft="40dp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -212,8 +213,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="5"
                     android:layout_marginTop="15dp"
+                    android:layout_weight="5"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -226,8 +227,8 @@
                         android:id="@+id/seek"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:max="256"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:max="256" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -238,30 +239,57 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_weight="0.5">
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/BTS"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_height="13dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
-                android:onClick="onClick"
-                android:background="@drawable/btn_bg"
-                android:text="적용"
-                android:textSize="30dp" />
+                android:orientation="vertical">
 
-            <Button
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="Enter a Name"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@drawable/btn_bg"
+                android:layout_height="38dp"
                 android:layout_weight="1"
-                android:layout_marginRight="15dp"
-                android:textSize="30dp"
-                android:text="취소"/>
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/BTS3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_bg"
+                    android:onClick="onClick"
+                    android:text="적용"
+                    android:textSize="30dp" />
+
+                <Button
+                    android:id="@+id/cancle"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_bg"
+                    android:onClick="onClick"
+                    android:text="취소"
+                    android:textSize="30dp" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

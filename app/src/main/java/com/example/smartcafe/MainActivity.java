@@ -7,18 +7,21 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 //테스트 수정
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private long lastTimeBackPressed;
     private TextView T1;
 
     @Override
@@ -85,8 +88,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intents);
                 break;
         }
-
-
     }
-
+    @Override
+    public void onBackPressed(){
+        if(System.currentTimeMillis() - lastTimeBackPressed < 1500){
+            finish();
+            return;
+        }
+        Toast.makeText(this, "뒤로가기를 한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+        lastTimeBackPressed = System.currentTimeMillis();
+    }
 }
