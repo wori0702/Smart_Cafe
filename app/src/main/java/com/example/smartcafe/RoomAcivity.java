@@ -22,7 +22,16 @@ import java.io.IOException;
 
 public class RoomAcivity extends AppCompatActivity implements View.OnClickListener {
 
+
+
+    String [] temp_array = {"23","24","22"};
+    int [] Light_array = {100,150,200};
+
     TextView temp_text;
+    Button btn_spring;
+    Button btn_summer;
+    Button btn_winter;
+    Button btn_exit;
     SeekBar seekBar;
     Button btn;
     int temp;
@@ -41,16 +50,17 @@ public class RoomAcivity extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_room_acivity);
         temp_text=findViewById(R.id.text_temp);
         seekBar= findViewById(R.id.seek);
+        btn_exit = findViewById(R.id.btn_exit);
+        btn_spring=findViewById(R.id.btn_spring);
+        btn_summer=findViewById(R.id.btn_summer);
+        btn_winter=findViewById(R.id.btn_winter);
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
         seekdata = extras.getString("Light");
         default_temperature = extras.getString("Temperature");
 
-        Log.d("take_data", seekdata + "aaaaa"+default_temperature);
-
         client = new OkHttpClient();
-
 
         temp_text.setText(default_temperature +"℃");
         seekBar.setProgress(Integer.parseInt(seekdata));
@@ -80,7 +90,6 @@ public class RoomAcivity extends AppCompatActivity implements View.OnClickListen
 
         switch (view.getId()) {
             case R.id.BTS:
-
                 RequestBody = new FormBody.Builder()
                         .add("Light",seekdata)
                         .add("temperture",default_temperature)
@@ -119,10 +128,27 @@ public class RoomAcivity extends AppCompatActivity implements View.OnClickListen
                 temp = Integer.parseInt(default_temperature);
                 default_temperature= Integer.toString(temp -1 );
                 temp_text.setText(default_temperature+"℃"
-
                 );
                 break;
 
+            case R.id.btn_spring:
+                default_temperature=temp_array[0];
+                temp_text.setText(default_temperature+"℃");
+                break;
+
+            case R.id.btn_summer:
+                default_temperature=temp_array[1];
+                temp_text.setText(default_temperature+"℃");
+                break;
+
+            case R.id.btn_winter:
+                default_temperature=temp_array[2];
+                temp_text.setText(default_temperature+"℃");
+                break;
+
+            case R.id.btn_exit:
+                finish();
+                break;
         }
     }
 
