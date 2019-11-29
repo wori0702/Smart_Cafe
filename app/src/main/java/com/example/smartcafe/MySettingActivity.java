@@ -9,6 +9,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import androidx.appcompat.app.AppCompatActivity;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,31 +36,26 @@ public class MySettingActivity extends AppCompatActivity {
     private String[] data;
     private String[] temp;
     private String[] lux;
+    private OkHttpClient client;
+    private RequestBody requestBody;
+    private Request request;
+    private String url =  "http://192.168.0.80/send_data";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_my_setting);
+        client = new OkHttpClient();
         idx = new int[6];
         plusidx = new int[4];
         temp = new String[4];
         lux = new String[4];
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_setting);
 
         int[] idx;
         int[] plusidx;
         data = new String[4];
         idx = new int[10];
         plusidx = new int[4];
-
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(getFilesDir() + "test.txt"));
-            bw.write("0,내일견학,24,200\n");
-            bw.write("1,행복그자체,22,55\n");
-            bw.write("2,정말대단해,26,11\n");
-            bw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(getFilesDir() + "test.txt"));
@@ -213,7 +215,25 @@ public class MySettingActivity extends AppCompatActivity {
             btn0.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println("Temperature : " + temp[0] + " lux : " + lux[0]);
+                    requestBody = new FormBody.Builder()
+                            .add("Light",lux[0])
+                            .add("Temperature",temp[0])
+                            .build();
+                    request = new Request.Builder()
+                            .url(url)
+                            .post(requestBody)
+                            .build();
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Log.d("error","send Error");
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            Log.d("success","send Success");
+                        }
+                    });
                 }
             });
         }
@@ -234,8 +254,25 @@ public class MySettingActivity extends AppCompatActivity {
             btn2 = findViewById(idx[2]);
             btn2.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    System.out.println("Temperature : " + temp[1] + " lux : " + lux[1]);
+                public void onClick(View v) {requestBody = new FormBody.Builder()
+                        .add("Light",lux[1])
+                        .add("Temperature",temp[1])
+                        .build();
+                    request = new Request.Builder()
+                            .url(url)
+                            .post(requestBody)
+                            .build();
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Log.d("error","send Error");
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            Log.d("success","send Success");
+                        }
+                    });
                 }
             });
         }
@@ -256,8 +293,25 @@ public class MySettingActivity extends AppCompatActivity {
             btn4 = findViewById(idx[4]);
             btn4.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    System.out.println("Temperature : " + temp[2] + " lux : " + lux[2]);
+                public void onClick(View v) {requestBody = new FormBody.Builder()
+                        .add("Light",lux[2])
+                        .add("Temperature",temp[2])
+                        .build();
+                    request = new Request.Builder()
+                            .url(url)
+                            .post(requestBody)
+                            .build();
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Log.d("error","send Error");
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            Log.d("success","send Success");
+                        }
+                    });
                 }
             });
         }
@@ -278,8 +332,25 @@ public class MySettingActivity extends AppCompatActivity {
             btn6 = findViewById(idx[6]);
             btn6.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    System.out.println("Temperature : " + temp[3] + " lux : " + lux[3]);
+                public void onClick(View v) {requestBody = new FormBody.Builder()
+                        .add("Light",lux[3])
+                        .add("Temperature",temp[3])
+                        .build();
+                    request = new Request.Builder()
+                            .url(url)
+                            .post(requestBody)
+                            .build();
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Log.d("error","send Error");
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            Log.d("success","send Success");
+                        }
+                    });
                 }
             });
         }
