@@ -96,30 +96,33 @@
                     tools:text="조도\n테마" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/laptop_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:drawableTop="@drawable/laptop"
                     android:layout_marginRight="5dp"
+                    android:onClick="onClick"
                     android:layout_weight="1"
                     android:background="@drawable/btn_bg"
                     android:paddingTop="20dp"
                     android:text="Laptop" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/discuss_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:drawableTop="@drawable/discuss"
-                    android:background="@drawable/btn_bg"
-                    android:paddingTop="20dp"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
+                    android:onClick="onClick"
+                    android:background="@drawable/btn_bg"
+                    android:drawableTop="@drawable/discuss"
+                    android:paddingTop="20dp"
                     android:text="Discuss" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/study_btn"
                     android:layout_width="wrap_content"
+                    android:onClick="onClick"
                     android:background="@drawable/btn_bg"
                     android:layout_height="match_parent"
                     android:paddingTop="20dp"
