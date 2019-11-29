@@ -23,7 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MySettingActivity extends AppCompatActivity {
-
+    // values
     private int[] idx;
     private int[] plusidx;
     private String[] data;
