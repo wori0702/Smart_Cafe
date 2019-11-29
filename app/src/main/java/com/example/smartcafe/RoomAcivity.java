@@ -91,7 +91,7 @@ public class RoomAcivity extends AppCompatActivity implements View.OnClickListen
             case R.id.BTS:
                 RequestBody = new FormBody.Builder()
                         .add("Light",seekdata)
-                        .add("temperture",default_temperature)
+                        .add("Temperature",default_temperature)
                         .build();
                 request = new Request.Builder()
                         .url(url)
@@ -129,22 +129,27 @@ public class RoomAcivity extends AppCompatActivity implements View.OnClickListen
                 temp_text.setText(default_temperature+"℃"
                 );
                 break;
-
             case R.id.btn_spring:
                 default_temperature=temp_array[0];
                 temp_text.setText(default_temperature+"℃");
                 break;
-
             case R.id.btn_summer:
                 default_temperature=temp_array[1];
                 temp_text.setText(default_temperature+"℃");
                 break;
-
             case R.id.btn_winter:
                 default_temperature=temp_array[2];
                 temp_text.setText(default_temperature+"℃");
                 break;
-
+            case  R.id.laptop_btn:
+                seekBar.setProgress(Light_array[0]);
+                break;
+            case  R.id.discuss_btn:
+                seekBar.setProgress(Light_array[1]);
+                break;
+            case  R.id.study_btn:
+                seekBar.setProgress(Light_array[2]);
+                break;
             case R.id.btn_exit:
                 finish();
                 break;
