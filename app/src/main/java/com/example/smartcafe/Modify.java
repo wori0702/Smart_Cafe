@@ -239,6 +239,9 @@ public class Modify extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    Intent intent = new Intent(getApplicationContext(), MySettingActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                    startActivity(intent);
                 }
             });
         }

@@ -13,6 +13,8 @@ public class MakeRoomActivity extends AppCompatActivity implements View.OnClickL
     SeekBar seekBar;
     Button btn;
     String seekdata;
+    private String[] data;
+
     //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class MakeRoomActivity extends AppCompatActivity implements View.OnClickL
             case R.id.BTS:
                 Log.d("makchar",seekdata);
             case R.id.cancle:
-                onBackPressed();
+                finish();
         }
     }
 }

@@ -26,7 +26,7 @@ public class MySettingActivity extends AppCompatActivity {
 
     private int[] idx;
     private int[] plusidx;
-    private  String[] data;
+    private String[] data;
     private String[] temp;
     private String[] lux;
 
@@ -223,6 +223,8 @@ public class MySettingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
+                    intent.putExtra("data", data);
+                    intent.putExtra("num", 0);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -243,6 +245,8 @@ public class MySettingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
+                    intent.putExtra("data", data);
+                    intent.putExtra("num", 1);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -263,6 +267,8 @@ public class MySettingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
+                    intent.putExtra("data", data);
+                    intent.putExtra("num", 2);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -283,6 +289,8 @@ public class MySettingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
+                    intent.putExtra("data", data);
+                    intent.putExtra("num", 3);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -317,6 +325,8 @@ public class MySettingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
+                    intent.putExtra("data", data);
+                    intent.putExtra("num", 0);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -328,6 +338,8 @@ public class MySettingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
+                    intent.putExtra("data", data);
+                    intent.putExtra("num", 1);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -339,6 +351,8 @@ public class MySettingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
+                    intent.putExtra("data", data);
+                    intent.putExtra("num", 2);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -350,6 +364,8 @@ public class MySettingActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
+                    intent.putExtra("data", data);
+                    intent.putExtra("num", 3);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }

@@ -42,6 +42,7 @@ public class RoomAcivity extends AppCompatActivity implements View.OnClickListen
     String default_temperature;
     Request request;
 //
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
