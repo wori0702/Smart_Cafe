@@ -22,8 +22,6 @@ import java.io.IOException;
 
 public class RoomAcivity extends AppCompatActivity implements View.OnClickListener {
 
-
-
     String [] temp_array = {"23","24","22"};
     int [] Light_array = {100,150,200};
 

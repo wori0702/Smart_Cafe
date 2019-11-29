@@ -41,7 +41,7 @@
                     android:textSize="30sp" />
 
                 <Button
-                    android:id="@+id/spring"
+                    android:id="@+id/btn_spring"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
@@ -54,7 +54,7 @@
                     android:text="Spring" />
 
                 <Button
-                    android:id="@+id/summer"
+                    android:id="@+id/btn_summer"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
@@ -66,13 +66,14 @@
                     android:text="Summer" />
 
                 <Button
-                    android:id="@+id/winter"
+                    android:id="@+id/btn_winter"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_bg"
                     android:drawableTop="@drawable/winter"
+                    android:onClick="onClick"
                     android:paddingTop="20dp"
                     android:text="Winter"
                     tools:onClick="onClick" />
@@ -96,35 +97,38 @@
                     tools:text="조도\n테마" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/laptop_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_bg"
                     android:drawableTop="@drawable/laptop"
+                    android:onClick="onClick"
                     android:paddingTop="20dp"
                     android:text="Laptop" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/discuss_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_bg"
                     android:drawableTop="@drawable/discuss"
+                    android:onClick="onClick"
                     android:paddingTop="20dp"
                     android:text="Discuss" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/study_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_bg"
                     android:drawableTop="@drawable/study"
+                    android:onClick="onClick"
                     android:paddingTop="20dp"
                     android:text="Study" />
             </LinearLayout>
@@ -194,6 +198,7 @@
                             android:background="@drawable/btn_bg"
                             android:drawableLeft="@drawable/up"
 
+                            android:onClick="onClick"
                             android:paddingLeft="40dp" />
 
                         <Button
@@ -205,6 +210,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/btn_bg"
                             android:drawableLeft="@drawable/down"
+                            android:onClick="onClick"
                             android:paddingLeft="40dp" />
                     </LinearLayout>
 
@@ -251,7 +257,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -267,7 +273,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/BTS3"
+                    android:id="@+id/BTS"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginLeft="15dp"
@@ -279,7 +285,7 @@
                     android:textSize="30dp" />
 
                 <Button
-                    android:id="@+id/cancle"
+                    android:id="@+id/btn_exit"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginRight="15dp"

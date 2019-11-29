@@ -34,6 +34,7 @@ public class MySettingActivity extends AppCompatActivity {
     private int[] idx;
     private int[] plusidx;
     private String[] data;
+    private String[] name;
     private String[] temp;
     private String[] lux;
     private OkHttpClient client;
@@ -48,6 +49,7 @@ public class MySettingActivity extends AppCompatActivity {
         client = new OkHttpClient();
         idx = new int[6];
         plusidx = new int[4];
+        name = new String[4];
         temp = new String[4];
         lux = new String[4];
 
@@ -95,6 +97,7 @@ public class MySettingActivity extends AppCompatActivity {
         for(int i =0; i < 4; i++){
             if(data[i] != null) {
                 String[] splitData = data[i].split(",");
+                name[i] = splitData[1];
                 temp[i] = splitData[2];
                 lux[i] = splitData[3];
 
@@ -115,9 +118,9 @@ public class MySettingActivity extends AppCompatActivity {
                 b1.setLayoutParams(btlp);
                 b2.setLayoutParams(btlp);
 
-                if(splitData[0].equals("0")) iv.setImageDrawable(getDrawable(R.drawable.spring));
-                if(splitData[0].equals("1")) iv.setImageDrawable(getDrawable(R.drawable.summer2));
-                if(splitData[0].equals("2")) iv.setImageDrawable(getDrawable(R.drawable.winter2));
+                if(splitData[0].equals("0")) iv.setImageDrawable(getDrawable(R.drawable.laptop2));
+                if(splitData[0].equals("1")) iv.setImageDrawable(getDrawable(R.drawable.discuss));
+                if(splitData[0].equals("2")) iv.setImageDrawable(getDrawable(R.drawable.study));
 
                 tv.setText(splitData[1]);
                 tv.setGravity(Gravity.CENTER);
@@ -244,7 +247,10 @@ public class MySettingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
                     intent.putExtra("data", data);
+                    intent.putExtra("name", name[0]);
                     intent.putExtra("num", 0);
+                    intent.putExtra("temp", temp[0]);
+                    intent.putExtra("lux", lux[0]);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -283,7 +289,10 @@ public class MySettingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
                     intent.putExtra("data", data);
+                    intent.putExtra("name", name[1]);
                     intent.putExtra("num", 1);
+                    intent.putExtra("temp", temp[1]);
+                    intent.putExtra("lux", lux[1]);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -322,7 +331,10 @@ public class MySettingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
                     intent.putExtra("data", data);
+                    intent.putExtra("name", name[2]);
                     intent.putExtra("num", 2);
+                    intent.putExtra("temp", temp[2]);
+                    intent.putExtra("lux", lux[2]);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -361,7 +373,10 @@ public class MySettingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
                     intent.putExtra("data", data);
+                    intent.putExtra("name", name[3]);
                     intent.putExtra("num", 3);
+                    intent.putExtra("temp", temp[3]);
+                    intent.putExtra("lux", lux[3]);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -397,7 +412,10 @@ public class MySettingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
                     intent.putExtra("data", data);
+                    intent.putExtra("name", "Enter a name");
                     intent.putExtra("num", 0);
+                    intent.putExtra("temp", "20");
+                    intent.putExtra("lux", "0");
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -410,7 +428,10 @@ public class MySettingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
                     intent.putExtra("data", data);
+                    intent.putExtra("name", "Enter a name");
                     intent.putExtra("num", 1);
+                    intent.putExtra("temp", "20");
+                    intent.putExtra("lux", "0");
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -423,7 +444,10 @@ public class MySettingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
                     intent.putExtra("data", data);
+                    intent.putExtra("name", "Enter a name");
                     intent.putExtra("num", 2);
+                    intent.putExtra("temp", "20");
+                    intent.putExtra("lux", "0");
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -436,7 +460,10 @@ public class MySettingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), MakeRoomActivity.class);
                     intent.putExtra("data", data);
+                    intent.putExtra("name", "Enter a name");
                     intent.putExtra("num", 3);
+                    intent.putExtra("temp", "20");
+                    intent.putExtra("lux", "0");
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
