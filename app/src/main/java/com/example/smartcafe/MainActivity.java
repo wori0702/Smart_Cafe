@@ -1,18 +1,17 @@
 package com.example.smartcafe;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,66 +19,85 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private long lastTimeBackPressed;
     private TextView T1;
+    private TextView T2;
+    private TextView T3;
     public OkHttpClient client;
-    public  Request request;
+    public Request request;
     public String save_temp="23";
     public String save_light="127";
+    public String url;
+    public String myRespone;
+    private static Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        final RequestBody requestBody = new FormBody.Builder()
-                .add("str[0]","20")
-                .add("str[1]","30")
-                .build();
-        Log.d("error","error is " +requestBody);
-
         client = new OkHttpClient();
 
-        String url = "http://192.168.0.80/receive_data";                                 //a여기서는 데이터 받아오는거만 하는거야
+        url = "http://192.168.0.80/receive_data";                                 //a여기서는 데이터 받아오는거만 하는거야
         request = new Request.Builder()
                 .url(url)
-                .post(requestBody)
                 .build();
 
         Button RoomButton = findViewById(R.id.RoomButton);
         Button SettingButton = findViewById(R.id.MySettingButton);
 
         T1 = findViewById(R.id.BTnum);
-        final TextView T2 = findViewById(R.id.TPnum);
-        final TextView T3 = findViewById(R.id.Co2num);
+        T2 = findViewById(R.id.TPnum);
+        T3 = findViewById(R.id.Co2num);
 
-        client.newCall(request).enqueue(new Callback() {
+        mHandler = new Handler(){
             @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                request = new Request.Builder()
+                        .url(url)
+                        .build();
+
+                client.newCall(request).enqueue(new okhttp3.Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.d("error","send_error");
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String myrRespone = response.body().string();
+                        String [] splitdata= myrRespone.split(" ");
+                        T2.setText(splitdata[0]);
+                        T3.setText(splitdata[1]);
+                    }
+                });
+
             }
+        };
+
+        class data_update implements  Runnable{
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if(response.isSuccessful()){
-                    final String myRespone = response.body().string();
-//                    final String[] splittest = myRespone.split("\"");
-                    MainActivity.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            T1.setText(myRespone);
-//                            T2.setText(splittest[1]);
-//                            T3.setText(splittest[2]);
-                        }
-                    });
+            public void run() {
+                while(true) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    mHandler.sendEmptyMessage(0);
                 }
             }
-        });
+        }
+
+        data_update update = new data_update();
+        Thread t = new Thread(update);
+        t.start();
+
     }
 
 
@@ -123,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             {
                 Bundle bundle = data.getExtras();
                 save_light = bundle.getString("Light");
-                save_temp = bundle.getString("Temperture");
+                save_temp = bundle.getString("Temperature");
                 Log.d("OK_data",save_light + "aaaa"+save_temp);
 
             }
@@ -139,4 +157,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(this, "뒤로가기를 한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
         lastTimeBackPressed = System.currentTimeMillis();
     }
+
 }

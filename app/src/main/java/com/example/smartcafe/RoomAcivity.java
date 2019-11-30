@@ -111,7 +111,7 @@ public class RoomAcivity extends AppCompatActivity implements View.OnClickListen
 
                 Intent intent = new Intent(this,MainActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("Temperture",default_temperature);
+                bundle.putString("Temperature",default_temperature);
                 bundle.putString("Light",seekdata);
                 intent.putExtras(bundle);
                 setResult(Activity.RESULT_OK,intent);
