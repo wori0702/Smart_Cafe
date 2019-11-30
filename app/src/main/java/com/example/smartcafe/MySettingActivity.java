@@ -41,6 +41,8 @@ public class MySettingActivity extends AppCompatActivity {
     private RequestBody requestBody;
     private Request request;
     private String url =  "http://192.168.0.80/send_data";
+    private String default_lux = "127";
+    private String default_temp = "23";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -414,8 +416,8 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("data", data);
                     intent.putExtra("name", "Enter a name");
                     intent.putExtra("num", 0);
-                    intent.putExtra("temp", "20");
-                    intent.putExtra("lux", "0");
+                    intent.putExtra("temp", default_temp);
+                    intent.putExtra("lux", default_lux);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -430,8 +432,8 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("data", data);
                     intent.putExtra("name", "Enter a name");
                     intent.putExtra("num", 1);
-                    intent.putExtra("temp", "20");
-                    intent.putExtra("lux", "0");
+                    intent.putExtra("temp", default_temp);
+                    intent.putExtra("lux", default_lux);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -446,8 +448,8 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("data", data);
                     intent.putExtra("name", "Enter a name");
                     intent.putExtra("num", 2);
-                    intent.putExtra("temp", "20");
-                    intent.putExtra("lux", "0");
+                    intent.putExtra("temp", default_temp);
+                    intent.putExtra("lux", default_lux);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
@@ -462,8 +464,8 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("data", data);
                     intent.putExtra("name", "Enter a name");
                     intent.putExtra("num", 3);
-                    intent.putExtra("temp", "20");
-                    intent.putExtra("lux", "0");
+                    intent.putExtra("temp", default_temp);
+                    intent.putExtra("lux", default_lux);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
                 }
