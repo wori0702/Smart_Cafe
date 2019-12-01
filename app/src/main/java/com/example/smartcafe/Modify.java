@@ -92,9 +92,9 @@ public class Modify extends AppCompatActivity {
                 subll.setPaddingRelative(0, 100, 0, 0);
                 b1.setLayoutParams(btlp);
 
-                if(splitData[0].equals("0")) iv.setImageDrawable(getDrawable(R.drawable.laptop2));
-                if(splitData[0].equals("1")) iv.setImageDrawable(getDrawable(R.drawable.discuss));
-                if(splitData[0].equals("2")) iv.setImageDrawable(getDrawable(R.drawable.study));
+                if(splitData[0].equals("0")) iv.setImageDrawable(getDrawable(R.drawable.laptop3));
+                if(splitData[0].equals("1")) iv.setImageDrawable(getDrawable(R.drawable.discuss3));
+                if(splitData[0].equals("2")) iv.setImageDrawable(getDrawable(R.drawable.study3));
 
                 tv.setText(splitData[1]);
                 tv.setGravity(Gravity.CENTER);
