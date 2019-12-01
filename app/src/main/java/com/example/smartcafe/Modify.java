@@ -86,6 +86,7 @@ public class Modify extends AppCompatActivity {
                 ll.setLayoutParams(llpr);
                 ll.setBackground(getDrawable(R.drawable.btn_bg));
                 iv.setLayoutParams(ivlp);
+                iv.setPadding(30,30,30,30);
                 tv.setLayoutParams(tvlp);
                 subll.setLayoutParams(subpr);
                 subll.setOrientation(LinearLayout.VERTICAL);
