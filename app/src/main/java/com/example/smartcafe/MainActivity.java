@@ -23,6 +23,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private long lastTimeBackPressed;
+    private int eggcnt;
     private TextView T1;
     private TextView T2;
     private TextView T3;
@@ -38,13 +39,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        eggcnt=0;
         client = new OkHttpClient();
 
-        url = "http://192.168.0.80/receive_data";                                 //a여기서는 데이터 받아오는거만 하는거야
-        request = new Request.Builder()
-                .url(url)
-                .build();
+        url = "http://192.168.0.80";
 
         Button RoomButton = findViewById(R.id.RoomButton);
         Button SettingButton = findViewById(R.id.MySettingButton);
@@ -58,21 +56,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
                 request = new Request.Builder()
-                        .url(url)
+                        .url(url+"/receive_data")
                         .build();
 
                 client.newCall(request).enqueue(new okhttp3.Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
+
                         Log.d("error","send_error");
                     }
+
+
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String myrRespone = response.body().string();
                         String [] splitdata= myrRespone.split(" ");
-                        T2.setText(splitdata[0]);
-                        T3.setText(splitdata[1]);
+                        T1.setText(url);
+                        T2.setText(splitdata[0]+" ℃");
+                        T3.setText(splitdata[1]+" ppm");
                     }
                 });
 
@@ -85,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
                 while(true) {
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -106,6 +108,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId())
         {
+            case R.id.easter_egg:
+
+                if(eggcnt !=5)
+                {
+                    eggcnt++;
+                    System.out.println("egg" +eggcnt);
+                }
+                else {
+                    eggcnt=0;
+                    Intent egg = new Intent(this,EggActivity.class);
+                    egg.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                    startActivity(egg);
+                }
+                break;
 
             case R.id.RoomButton:
 

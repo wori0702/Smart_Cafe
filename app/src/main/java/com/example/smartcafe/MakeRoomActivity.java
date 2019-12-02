@@ -37,8 +37,6 @@ public class MakeRoomActivity extends AppCompatActivity implements View.OnClickL
     String [] data;
     int idx;
 
-//
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -101,6 +99,7 @@ public class MakeRoomActivity extends AppCompatActivity implements View.OnClickL
                 Intent intents = new Intent(this, MySettingActivity.class);
                 intents.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 startActivity(intents);
+                finish();
                 break;
             case R.id.temp_up_btn:
                 temp = Integer.parseInt(default_temperature);
@@ -137,6 +136,9 @@ public class MakeRoomActivity extends AppCompatActivity implements View.OnClickL
                 seekBar.setProgress(Light_array[2]);
                 break;
             case R.id.btn_exit:
+                Intent intents2 = new Intent(this, MySettingActivity.class);
+                intents2.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                startActivity(intents2);
                 finish();
                 break;
         }

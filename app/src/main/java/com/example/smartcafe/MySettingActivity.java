@@ -256,6 +256,7 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("lux", lux[0]);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -298,6 +299,7 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("lux", lux[1]);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -340,6 +342,7 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("lux", lux[2]);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -382,6 +385,7 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("lux", lux[3]);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -394,6 +398,7 @@ public class MySettingActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), Modify.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -402,9 +407,7 @@ public class MySettingActivity extends AppCompatActivity {
             btn9.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-                    startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -421,6 +424,7 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("lux", default_lux);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -437,6 +441,7 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("lux", default_lux);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -453,6 +458,7 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("lux", default_lux);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -469,14 +475,13 @@ public class MySettingActivity extends AppCompatActivity {
                     intent.putExtra("lux", default_lux);
                     intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
     }
     @Override
     public void onBackPressed(){
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-        startActivity(intent);
+        finish();
     }
 }
